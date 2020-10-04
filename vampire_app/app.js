@@ -4,6 +4,7 @@ const connectionString = 'mongodb://localhost:27017/vamptest';
 // 2. Require your Model
 // const db = require('./models');
 const Vampire = require('./models/vampire');
+const populateVampires = require('./populateVampires');
 // 3. Require your extra data source
 const vampData = require('./populateVampires');
 // 4. Connect your database
@@ -97,6 +98,57 @@ mongoose.connection.on('error', (error) => {
 // ## QUERYING
 /////////////////////////////////////////////////
 // ### Select by comparison
+
+//1) find all the vampires that are females
+// Vampire.find({gender: 'f'} , (error, allFemaleVampires) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(allFemaleVampires);
+//     }
+//     process.exit();
+// });
+
+//2) have greater than 500 victims
+// Vampire.find({victims: {$gt: 500}} , (error, filteredVampires) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredVampires);
+//     }
+//     process.exit();
+// });
+
+//3) have fewer than or equal to 150 victims
+// Vampire.find({victims: {$lte: 150}} , (error, filteredVampires) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(filteredVampires);
+//     }
+//     process.exit();
+// });
+
+//4) have a victim count is not equal to 210234
+// Vampire.find({victims: {$ne: 210234}} , (error, filteredVampires) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(filteredVampires);
+//     }
+//     process.exit();
+// });
+
+//5) have greater than 150 AND fewer than 500 victims
+Vampire.find({victims: {$gt: 150 , $lt: 500}} , (error, filteredVampires) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(filteredVampires);
+    }
+    process.exit();
+});
+
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
