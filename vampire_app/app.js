@@ -2,9 +2,10 @@
 const mongoose = require('mongoose');
 const connectionString = 'mongodb://localhost:27017/vamptest';
 // 2. Require your Model
-const db = require('./models');
+// const db = require('./models');
+const Vampire = require('./models/vampire');
 // 3. Require your extra data source
-const popVampires = require('./populateVampires');
+const vampData = require('./populateVampires');
 // 4. Connect your database
 mongoose.connect(connectionString, {
     useNewUrlParser: true,
@@ -29,7 +30,68 @@ mongoose.connection.on('error', (error) => {
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
 
+
+// Vampire.collection.insertMany(vampData, (error, data) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(data);
+//     }
+//     process.exit();
+// });
+
+
 // ### Add some new vampire data
+
+
+
+
+// Vampire.create({
+//     name: 'John Doe',
+//     hair_color: 'brown',
+//     eye_color: 'green',
+//     dob:'January 9, 1920',
+//     loves: ['potatoes','blood'],
+//     location:'Los Angeles, California, US',
+//     gender: 'm',
+//     victims: 4
+// });
+
+// Vampire.create({
+//     name: 'Steve Jones',
+//     hair_color: 'blond',
+//     eye_color: 'red',
+//     dob: 'June 19, 1980',
+//     loves: ['ice cream', 'rain'],
+//     location: 'Phoenix, Arizona, US',
+//     gender: 'm',
+//     victims: 2
+// });
+
+// Vampire.create({
+//     name: 'Jane Doe',
+//     hair_color: 'brown',
+//     eye_color: 'blue',
+//     dob: 'December 2, 1960',
+//     loves: ['long walks on the beach' , 'bats'],
+//     location: 'Paris, France',
+//     gender: 'f',
+//     victims: 10
+// });
+
+// Vampire.create({
+//     name: 'Susan Williams',
+//     hair_color: 'blonde',
+//     eye_color: 'green',
+//     dob: 'August 30, 1990',
+//     loves: ['sleeping' , 'coffins'],
+//     location: 'Toronto, Canada',
+//     gender:'f',
+//     victims: 6
+// });
+
+
+
 
 /////////////////////////////////////////////////
 // ## QUERYING
@@ -72,8 +134,10 @@ mongoose.connection.on('error', (error) => {
 
 /////////////////////////////////////////////////
 
-const VampireModel = require('./models/vampire');
+// const VampireModel = require('./models/vampire');
 
-module.exports = {
-    Vampire: VampireModel
-};
+
+// module.exports = {
+//     Vampire: VampireModel
+// };
+

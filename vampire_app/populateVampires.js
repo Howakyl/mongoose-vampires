@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     name: 'Count Chocula',
     hair_color: 'brown',
