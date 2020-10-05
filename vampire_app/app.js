@@ -412,6 +412,28 @@ mongoose.connection.on('error', (error) => {
 /////////////////////////////////////////////////
 // ## REMOVE
 
+
+//1) Remove a single document wherein the hair_color is 'brown'
+// Vampire.findOneAndRemove({hair_color: 'brown'} , (error, removedData) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(removedData);
+//     }
+//     process.exit();
+// });
+
+//2) remove vampires with blue eyes
+Vampire.deleteMany({eye_color: 'blue'} , (error, removedData) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(removedData);
+    }
+    process.exit();
+});
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
@@ -423,11 +445,4 @@ mongoose.connection.on('error', (error) => {
 //## Negative Selection
 
 /////////////////////////////////////////////////
-
-// const VampireModel = require('./models/vampire');
-
-
-// module.exports = {
-//     Vampire: VampireModel
-// };
 
