@@ -184,17 +184,58 @@ mongoose.connection.on('error', (error) => {
 // });
 
 //4) have victims AND the victims they have are greater than 1000
-Vampire.find({victims: {$exists: true} , victims: {$gt: 1000}} , (error, filteredVampires) => {
-    if (error) {
-        console.log(error)
-    } else {
-        console.log(filteredVampires)
-    }
-    process.exit();
-});
+// Vampire.find({victims: {$exists: true} , victims: {$gt: 1000}} , (error, filteredVampires) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredVampires)
+//     }
+//     process.exit();
+// });
+
 /////////////////////////////////////////////////
 // ### Select with OR
 
+
+//1) are from New York, New York, US or New Orleans, Lousiana, US
+// Vampire.find({$or: [{location: 'New York, New York, US'} , {location: 'New Orleans, Louisiana, US'}]} , (error, filteredLocation) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredLocation);
+//     }
+//     process.exit();
+// });
+
+//2) love brooding or being tragic 
+// Vampire.find({$or: [{loves: 'brooding'} , {loves: 'being tragic'}]} , (error, filteredLoves) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredLoves)
+//     }
+//     process.exit();
+// });
+
+//3) have more than 1000 victims or love marshmallows
+// Vampire.find({$or: [{victims: {$gt: 1000}} , {loves: 'marshmallows'}]} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData)
+//     }
+//     process.exit();
+// });
+
+//4) have red hair or green eyes
+Vampire.find({$or: [{hair_color: 'red'} , {eye_color: 'green'}]} , (error, filteredData) => {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log(filteredData)
+    }
+    process.exit();
+});
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 
