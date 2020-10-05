@@ -153,6 +153,8 @@ mongoose.connection.on('error', (error) => {
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
+
+
 //1) have a title property
 // Vampire.find({title: {$exists: true}} , (error,titleVampires) => {
 //     if (error) {
@@ -228,16 +230,60 @@ mongoose.connection.on('error', (error) => {
 // });
 
 //4) have red hair or green eyes
-Vampire.find({$or: [{hair_color: 'red'} , {eye_color: 'green'}]} , (error, filteredData) => {
-    if (error) {
-        console.log(error)
-    } else {
-        console.log(filteredData)
-    }
-    process.exit();
-});
+// Vampire.find({$or: [{hair_color: 'red'} , {eye_color: 'green'}]} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData)
+//     }
+//     process.exit();
+// });
+
+
+
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
+
+//1) love either frilly shirtsleeves or frilly collars
+// Vampire.find({$or: [{loves: 'frilly collars'} , {loves: 'frilly shirtsleeves'}]} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
+
+//2) love brooding
+// Vampire.find({loves: 'brooding'} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
+
+//3) love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
+// Vampire.find({$or: [{loves: 'appearing innocent'} , {loves: 'trickery'} , {loves: 'lurking in rotting mansions'} , {loves: 'R&B music'}]} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
+
+//4) love fancy cloaks but not if they also love either top hats or virgin blood
+// Vampire.find({ $and: [{loves: 'fancy cloaks'} , {loves: {$nin: ['top hats' , 'virgin blood']}}]} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
+
 
 /////////////////////////////////////////////////
 //### Negative Selection
