@@ -333,26 +333,80 @@ mongoose.connection.on('error', (error) => {
 /////////////////////////////////////////////////
 // ## REPLACE
 
-//1)replace the vampire called 'Claudia' with a vampire called 'Eve'
-Vampire.findOneAndUpdate(
-    {name: 'Claudia'},
-    {$set: {name: 'Eve'}},
-    {new: true},
-    (error, updatedName) => {
-        if (error) {
-            console.log(error)
-        } else {
-            console.log(updatedName);
-        }
-        process.exit();
-    }
-);
-
+// //1)replace the vampire called 'Claudia' with a vampire called 'Eve'
+// Vampire.findOneAndUpdate(
+//     {name: 'Claudia'},
+//     {$set: {name: 'Eve'}},
+//     {new: true},
+//     (error, updatedName) => {
+//         if (error) {
+//             console.log(error)
+//         } else {
+//             console.log(updatedName);
+//         }
+//         process.exit();
+//     }
+// );
 
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
+
+//2) update 'Eve' to have a gender of 'm'
+// Vampire.findByIdAndUpdate(
+//     '5f7a3a1a2b70f4211ccf4743' ,
+//     {$set: {gender: 'm'}},
+//     {new: true},
+//     (error, updatedGender) => {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             console.log(updatedGender);
+//         }
+//         process.exit();
+//     }
+// );
+
+//3) Rename Eve's name field to 'moniker'
+// Vampire.findByIdAndUpdate(
+//     '5f7a3a1a2b70f4211ccf4743',
+//     {$set: {name: 'moniker'}},
+//     {new: true},
+//     (error, updatedName) => {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             console.log(updatedName);
+//         }
+//         process.exit();
+//     }
+// );
+
+//4) We now no longer want to categorize female gender as "f", but rather as 'fems'. Update all females so that they are of gender "fems"
+// Vampire.updateMany(
+//     {gender: 'f'},
+//     {$set: {gender: 'fems'}},
+//     {new: true},
+//     (error, updatedGender) => {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             console.log(updatedGender);
+//         }
+//         process.exit();
+//     }
+// );
+
+//THIS IS USED TO CHECK ACCURACY OF QUESTION 4 
+// Vampire.find({gender: 'fems'} , (error, filteredVampires) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(filteredVampires);
+//     }
+//     process.exit();
+// });
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
