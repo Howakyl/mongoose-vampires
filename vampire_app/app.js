@@ -288,6 +288,47 @@ mongoose.connection.on('error', (error) => {
 /////////////////////////////////////////////////
 //### Negative Selection
 
+//1) love ribbons but do not have brown eyes
+// Vampire.find({$and: [{loves: 'ribbons'} , { eye_color: {$nin: ['brown']}}]} , (error, filteredData) => {
+//         if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
+
+//2) are not from Rome
+// Vampire.find({location: {$nin: ['Rome, Italy']}} , (error, filteredData) => {
+//             if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
+
+//3) do not love any of the following: ['fancy cloaks' , 'frilly shirtsleeves' , 'appearing innocent' , 'being tragic' , 'brooding']
+// Vampire.find({ $and: [{loves: {$nin: ['fancy cloaks' , 'frilly shirtsleeves' , 'appearing innocent' , 'being tragic' , 'brooding']}}]} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
+
+//4) have not killed more than 200 people
+Vampire.find({victims: {$lt: 200}} , (error, filteredData) => {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log(filteredData);
+    }
+    process.exit();
+});
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
