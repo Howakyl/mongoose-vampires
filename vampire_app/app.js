@@ -319,19 +319,36 @@ mongoose.connection.on('error', (error) => {
 // });
 
 //4) have not killed more than 200 people
-Vampire.find({victims: {$lt: 200}} , (error, filteredData) => {
-    if (error) {
-        console.log(error)
-    } else {
-        console.log(filteredData);
-    }
-    process.exit();
-});
+// Vampire.find({victims: {$lt: 200}} , (error, filteredData) => {
+//     if (error) {
+//         console.log(error)
+//     } else {
+//         console.log(filteredData);
+//     }
+//     process.exit();
+// });
 
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
+
+//1)replace the vampire called 'Claudia' with a vampire called 'Eve'
+Vampire.findOneAndUpdate(
+    {name: 'Claudia'},
+    {$set: {name: 'Eve'}},
+    {new: true},
+    (error, updatedName) => {
+        if (error) {
+            console.log(error)
+        } else {
+            console.log(updatedName);
+        }
+        process.exit();
+    }
+);
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
